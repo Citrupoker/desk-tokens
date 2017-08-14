@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import{ JwtHelper} from 'angular2-jwt';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 export class NavbarComponent {
   public isCollapsed:boolean = false;
   public status:{isopen:boolean} = {isopen: false};
-
+  jwtHelper: JwtHelper = new JwtHelper();
   constructor(private router: Router){
 
   }
@@ -32,5 +33,14 @@ export class NavbarComponent {
   }
   logout(){
     localStorage.clear();
+  }
+  useJwtHelper() {
+    var token = localStorage.getItem('token');
+
+    console.log(
+      this.jwtHelper.decodeToken(token),
+      this.jwtHelper.getTokenExpirationDate(token),
+      this.jwtHelper.isTokenExpired(token)
+    );
   }
 }
