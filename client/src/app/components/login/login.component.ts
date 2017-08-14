@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
-
+import{ JwtHelper} from 'angular2-jwt';
 @Component({
   templateUrl: 'login.component.html'
 })
@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent {
   model: any = {};
   loading = false;
-
+  jwtHelper: JwtHelper = new JwtHelper();
   constructor(
     private router: Router,
     private userService: UserService){}
@@ -21,7 +21,15 @@ export class LoginComponent {
       .subscribe(
         data => {
           localStorage.setItem('token', JSON.parse(data['_body']).token);
-          this.router.navigate(['']);
+          var token = localStorage.getItem('token');
+          var decoded = this.jwtHelper.decodeToken(token);
+          if(decoded._doc.role === 'Admin'){
+            this.router.navigate(['/admin']);
+          }
+          if(decoded._doc.role === 'Client'){
+            this.router.navigate(['/profile']);
+          }
+
         },
         error => {
           this.loading = false;
@@ -36,4 +44,5 @@ export class LoginComponent {
   isLoggedIn(){
     return !!localStorage.getItem('token')
   }
+
 }

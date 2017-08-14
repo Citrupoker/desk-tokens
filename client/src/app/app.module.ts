@@ -12,6 +12,10 @@ import {UserService} from "./services/user.service";
 import {HttpModule} from "@angular/http";
 import {CollapseModule} from 'ngx-bootstrap';
 import { routing } from './app.routing';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminGuard } from './guards/admin.guard';
+import { ClientGuard } from './guards/client.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,9 @@ import { routing } from './app.routing';
     RegisterComponent,
     HomeComponent,
     NoContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,7 @@ import { routing } from './app.routing';
     CollapseModule.forRoot(),
     routing
   ],
-  providers: [UserService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [UserService,AdminGuard,ClientGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

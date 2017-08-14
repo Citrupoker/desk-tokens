@@ -49,13 +49,4 @@ export class NavbarComponent {
   logout(){
     localStorage.clear();
   }
-  useJwtHelper() {
-    var token = localStorage.getItem('token');
-
-    console.log(
-      this.jwtHelper.decodeToken(token),
-      this.jwtHelper.getTokenExpirationDate(token),
-      this.jwtHelper.isTokenExpired(token)
-    );
-  }
 }

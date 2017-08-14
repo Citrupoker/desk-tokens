@@ -15,9 +15,8 @@
         <li><a routerLink="/login" *ngIf="!isLoggedIn()">Login</a></li>
         <li><a routerLink="/login" *ngIf="isLoggedIn()" (click)="logout()">Logout</a></li>
         <li><a routerLink="/register" *ngIf="!isLoggedIn()">Register</a></li>
-        <li><a routerLink="/register" *ngIf="isAdmin() === 'Admin' && isLoggedIn()">Admin</a></li>
-        <li><a routerLink="/register" *ngIf="isAdmin() === 'Client' && isLoggedIn()">Profile</a></li>
-        <li><a (click)="useJwtHelper()">Click</a></li>
+        <li><a routerLink="/admin" *ngIf="isAdmin() === 'Admin' && isLoggedIn()">Admin</a></li>
+        <li><a routerLink="/profile" *ngIf="isAdmin() === 'Client' && isLoggedIn()">Profile</a></li>
       </ul>
         </div>
     <nav class="visible-xs hidden-md-up">
