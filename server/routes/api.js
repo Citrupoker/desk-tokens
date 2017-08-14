@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var passport = require('passport');
 // Register new users
 router.post('/register', function(req, res) {  
   if(!req.body.email || !req.body.password) {

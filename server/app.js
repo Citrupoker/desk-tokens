@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var passport = require('passport');  
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
-var User = require('./app/models/user');
-
+var User = require('./models/User');
+require('dotenv').config()
 var index = require('./routes/index');
 var api = require('./routes/api');
 
