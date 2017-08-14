@@ -10,6 +10,7 @@ export class NavbarComponent {
   public isCollapsed:boolean = false;
   public status:{isopen:boolean} = {isopen: false};
   jwtHelper: JwtHelper = new JwtHelper();
+  decoded: any;
   constructor(private router: Router){
 
   }
@@ -30,6 +31,20 @@ export class NavbarComponent {
 
   isLoggedIn(){
     return !!localStorage.getItem('token')
+  }
+  isAdmin(){
+    var token = localStorage.getItem('token');
+    if(token){
+      this.decoded = this.jwtHelper.decodeToken(token);
+      if(this.decoded._doc.role === 'Admin'){
+        return 'Admin';
+      }
+      if(this.decoded._doc.role === 'Client'){
+        return 'Client';
+      }
+    }
+
+  return false;
   }
   logout(){
     localStorage.clear();
