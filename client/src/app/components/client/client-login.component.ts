@@ -20,15 +20,19 @@ export class ClientLoginComponent {
     this.clientService.login(this.model)
       .subscribe(
         data => {
-          localStorage.setItem('token', JSON.parse(data['_body']).token);
-          var token = localStorage.getItem('token');
-          var decoded = this.jwtHelper.decodeToken(token);
-          if(decoded._doc.role === 'Admin'){
-            this.router.navigate(['/admin']);
+          this.loading = false;
+          if(JSON.parse(data['_body']).token !== undefined){
+            localStorage.setItem('token', JSON.parse(data['_body']).token);
+            var token = localStorage.getItem('token');
+            var decoded = this.jwtHelper.decodeToken(token);
+            if(decoded._doc.role === 'Admin'){
+              this.router.navigate(['/admin']);
+            }
+            if(decoded._doc.role === 'Client'){
+              this.router.navigate(['/client-dashboard']);
+            }
           }
-          if(decoded._doc.role === 'Client'){
-            this.router.navigate(['/client-dashboard']);
-          }
+
 
         },
         error => {
