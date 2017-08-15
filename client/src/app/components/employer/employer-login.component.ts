@@ -21,7 +21,7 @@ export class EmployerLoginComponent {
       .subscribe(
         data => {
           this.loading = false;
-          if(JSON.parse(data['_body']).token !== 'undefined') {
+          if(JSON.parse(data['_body']).token !== undefined) {
             localStorage.setItem('token', JSON.parse(data['_body']).token);
             var token = localStorage.getItem('token');
             var decoded = this.jwtHelper.decodeToken(token);
@@ -31,6 +31,8 @@ export class EmployerLoginComponent {
             if (decoded._doc.role === 'Employer') {
               this.router.navigate(['/employer-dashboard']);
             }
+          }else{
+            console.log('Wrong credentials')
           }
         },
         error => {

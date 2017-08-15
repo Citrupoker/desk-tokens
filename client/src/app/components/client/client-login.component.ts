@@ -31,6 +31,8 @@ export class ClientLoginComponent {
             if(decoded._doc.role === 'Client'){
               this.router.navigate(['/client-dashboard']);
             }
+          }else{
+            console.log('Wrong credentials')
           }
 
 
