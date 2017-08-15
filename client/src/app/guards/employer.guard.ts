@@ -23,9 +23,6 @@ export class EmployerGuard implements CanActivate {
       if (decoded._doc.role === 'Admin') {
         return 'Admin';
       }
-      if (decoded._doc.role === 'Client') {
-        return 'Client';
-      }
       if (decoded._doc.role === 'Employer') {
         return 'Employer';
       }

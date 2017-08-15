@@ -18,14 +18,17 @@ export class AdminGuard implements CanActivate {
 
   getRole() {
     const token = localStorage.getItem('token');
-    const decoded = this.jwtHelper.decodeToken(token);
-    if (decoded._doc.role === 'Admin') {
-      return 'Admin';
-    }
-    if (decoded._doc.role === 'Client') {
-      return 'Client';
-    }
-    return false;
+    if(token){
+      const decoded = this.jwtHelper.decodeToken(token);
+      if (decoded._doc.role === 'Admin') {
+        return 'Admin';
+      }
+      if (decoded._doc.role === 'Client') {
+        return 'Client';
+      }
+      return false;
 
-  }
+    }
+    }
+
 }
