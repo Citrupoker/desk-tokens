@@ -7,11 +7,10 @@ var bodyParser = require('body-parser');
 var passport = require('passport');  
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
-var User = require('./models/User');
 require('dotenv').config()
 var index = require('./routes/index');
-var api = require('./routes/api');
-
+var client = require('./routes/client');
+var employer = require('./routes/employer');
 var app = express();
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -27,7 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/', index);
-app.use('/api', api);
+app.use('/client', client);
+app.use('/employer', employer);
 
 // Initialize passport for use
 app.use(passport.initialize());  

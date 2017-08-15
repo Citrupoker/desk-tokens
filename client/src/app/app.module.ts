@@ -3,29 +3,37 @@ import { NgModule } from '@angular/core';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { ClientLoginComponent } from './components/client/client-login.component';
+import { ClientRegisterComponent } from './components/client/client-register.component';
+import { EmployerLoginComponent } from './components/employer/employer-login.component';
+import { EmployerRegisterComponent } from './components/employer/employer-register.component';
 import { HomeComponent } from './components/home/home.component';
 import {NoContentComponent} from './components/no-content/no-content';
 import { NavbarComponent} from './components/navbar/navbar.component'
-import {UserService} from "./services/user.service";
+import {ClientService} from "./services/client.service";
 import {HttpModule} from "@angular/http";
 import {CollapseModule} from 'ngx-bootstrap';
 import { routing } from './app.routing';
-import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ClientGuard } from './guards/client.guard';
+import { EmployerGuard } from './guards/employer.guard';
+import {EmployerService} from "./services/employer.service";
+import {EmployerDashboardComponent} from './components/employer/employer-dashboard.component';
+import {ClientDashboardComponent} from './components/client/client-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
+    ClientLoginComponent,
+    ClientRegisterComponent,
+    EmployerLoginComponent,
+    EmployerRegisterComponent,
     HomeComponent,
     NoContentComponent,
     NavbarComponent,
-    ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    EmployerDashboardComponent,
+    ClientDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,7 @@ import { ClientGuard } from './guards/client.guard';
     CollapseModule.forRoot(),
     routing
   ],
-  providers: [UserService,AdminGuard,ClientGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [ClientService, EmployerService,AdminGuard,ClientGuard,EmployerGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

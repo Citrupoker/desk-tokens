@@ -12,11 +12,14 @@
       <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav" >
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/login" *ngIf="!isLoggedIn()">Login</a></li>
-        <li><a routerLink="/login" *ngIf="isLoggedIn()" (click)="logout()">Logout</a></li>
-        <li><a routerLink="/register" *ngIf="!isLoggedIn()">Register</a></li>
+        <li><a routerLink="/client-login" *ngIf="!isLoggedIn()">Client Login</a></li>
+        <li><a routerLink="/employer-login" *ngIf="!isLoggedIn()">Employer Login</a></li>
+        <li><a routerLink="/client-register" *ngIf="!isLoggedIn()">Client Register</a></li>
+        <li><a routerLink="/employer-register" *ngIf="!isLoggedIn()">Employer Register</a></li>
         <li><a routerLink="/admin" *ngIf="isAdmin() === 'Admin' && isLoggedIn()">Admin</a></li>
-        <li><a routerLink="/profile" *ngIf="isAdmin() === 'Client' && isLoggedIn()">Profile</a></li>
+        <li><a routerLink="/client-dashboard" *ngIf="isAdmin() === 'Client' && isLoggedIn()">Client Dashboard</a></li>
+        <li><a routerLink="/employer-dashboard" *ngIf="isAdmin() === 'Employer' && isLoggedIn()">Employer Dashboard</a></li>
+        <li><a routerLink="/" *ngIf="isLoggedIn()" (click)="logout()">Logout</a></li>
       </ul>
         </div>
     <nav class="visible-xs hidden-md-up">

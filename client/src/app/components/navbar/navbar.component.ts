@@ -42,9 +42,10 @@ export class NavbarComponent {
       if(this.decoded._doc.role === 'Client'){
         return 'Client';
       }
+      if(this.decoded._doc.role === 'Employer'){
+        return 'Employer';
+      }
     }
-
-  return false;
   }
   logout(){
     localStorage.clear();

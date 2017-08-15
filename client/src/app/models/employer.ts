@@ -1,4 +1,4 @@
-export class User {
+export class Employer {
   _id: string;
   email: string;
   password: string;
