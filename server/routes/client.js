@@ -37,7 +37,7 @@ router.post('/authenticate', function(req, res) {
         if (isMatch && !err) {
           // Create token if the password matched and no error was thrown
           var token = jwt.sign(client, process.env.secret, {
-            expiresIn: 10080 // in seconds
+            expiresIn: 60*60*24 // in seconds
           });
           res.json({ success: true, token: 'JWT ' + token });
         } else {
@@ -49,7 +49,7 @@ router.post('/authenticate', function(req, res) {
 });
 
 router.get('/profile', passport.authenticate('jwt', { session: false }), function(req, res) {
-  res.send('It worked! User id is: ' + req.user._id + '.');
+    res.json({ success: true, status: 1 });
 });
 
 module.exports = router;
