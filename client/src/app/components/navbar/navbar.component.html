@@ -12,13 +12,19 @@
       <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav" >
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/client-login" *ngIf="!isLoggedIn()">Client Login</a></li>
-        <li><a routerLink="/employer-login" *ngIf="!isLoggedIn()">Employer Login</a></li>
-        <li><a routerLink="/client-register" *ngIf="!isLoggedIn()">Client Register</a></li>
-        <li><a routerLink="/employer-register" *ngIf="!isLoggedIn()">Employer Register</a></li>
+        <li class="nav-item dropdown" dropdown>
+          <a  role="button" class="nav-link dropdownToggle" dropdownToggle>Client <b class="caret"></b></a>
+          <ul  class="dropdown-menu" >
+            <li *ngFor="let clientChoice of clients"><a class="dropdown-item"  [routerLink]="['./client', clientChoice]" >{{clientChoice}}</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a  role="button" class="nav-link dropdownToggle" dropdownToggle>Employer <b class="caret"></b></a>
+          <ul  class="dropdown-menu" >
+            <li *ngFor="let employerChoice of employers"><a class="dropdown-item"  [routerLink]="['./employer', employerChoice]" >{{employerChoice}}</a></li>
+          </ul>
+        </li>
         <li><a routerLink="/admin" *ngIf="isAdmin() === 'Admin' && isLoggedIn()">Admin</a></li>
-        <li><a routerLink="/client-dashboard" *ngIf="isAdmin() === 'Client' && isLoggedIn()">Client Dashboard</a></li>
-        <li><a routerLink="/employer-dashboard" *ngIf="isAdmin() === 'Employer' && isLoggedIn()">Employer Dashboard</a></li>
         <li><a routerLink="/" *ngIf="isLoggedIn()" (click)="logout()">Logout</a></li>
       </ul>
         </div>

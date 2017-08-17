@@ -9,6 +9,8 @@ import{ JwtHelper} from 'angular2-jwt';
 export class NavbarComponent {
   public isCollapsed:boolean = false;
   public status:{isopen:boolean} = {isopen: false};
+  public clients:Array<string> = ['client-login', 'client-register', 'client-dashboard'];
+  public employers:Array<string> = ['employer-login', 'employer-register', 'employer-dashboard'];
   jwtHelper: JwtHelper = new JwtHelper();
   decoded: any;
   constructor(private router: Router){

@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import {NoContentComponent} from './components/no-content/no-content';
 import { NavbarComponent} from './components/navbar/navbar.component'
 import {ClientService} from "./services/client.service";
+import {ClientComponent} from './components/client/client.component';
+import {EmployerComponent} from './components/employer/employer.component';
 import {HttpModule} from "@angular/http";
 import {CollapseModule} from 'ngx-bootstrap';
 import { routing } from './app.routing';
@@ -22,6 +24,7 @@ import { EmployerGuard } from './guards/employer.guard';
 import {EmployerService} from "./services/employer.service";
 import {EmployerDashboardComponent} from './components/employer/employer-dashboard.component';
 import {ClientDashboardComponent} from './components/client/client-dashboard.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +37,17 @@ import {ClientDashboardComponent} from './components/client/client-dashboard.com
     NavbarComponent,
     AdminComponent,
     EmployerDashboardComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    EmployerComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     CollapseModule.forRoot(),
-    routing
+    routing,
+    BsDropdownModule.forRoot()
   ],
   providers: [ClientService, EmployerService,AdminGuard,ClientGuard,EmployerGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
