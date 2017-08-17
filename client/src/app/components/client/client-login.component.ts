@@ -29,7 +29,7 @@ export class ClientLoginComponent {
               this.router.navigate(['/admin']);
             }
             if(decoded._doc.role === 'Client'){
-              this.router.navigate(['/client-dashboard']);
+              this.router.navigate(['/client/client-dashboard']);
             }
           }else{
             console.log('Wrong credentials')

@@ -20,7 +20,7 @@ export class EmployerRegisterComponent {
     this.employerService.create(this.model)
       .subscribe(
         data => {
-          this.router.navigate(['/employer-login']);
+          this.router.navigate(['/employer/employer-login']);
         },
         error => {
           this.loading = false;

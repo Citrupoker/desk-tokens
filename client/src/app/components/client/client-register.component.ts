@@ -20,7 +20,7 @@ export class ClientRegisterComponent {
     this.clientService.create(this.model)
       .subscribe(
         data => {
-          this.router.navigate(['/client-login']);
+          this.router.navigate(['/client/client-login']);
         },
         error => {
           this.loading = false;

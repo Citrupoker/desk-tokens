@@ -29,7 +29,7 @@ export class EmployerLoginComponent {
               this.router.navigate(['/admin']);
             }
             if (decoded._doc.role === 'Employer') {
-              this.router.navigate(['/employer-dashboard']);
+              this.router.navigate(['/employer/employer-dashboard']);
             }
           }else{
             console.log('Wrong credentials')
